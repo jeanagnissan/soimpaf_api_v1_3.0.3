@@ -14,11 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +25,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "order_history")
+public class OrderHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,19 +49,16 @@ public class Order {
 	@Column(nullable = false, updatable = false)
 	private String slug;
 
+	@Column(nullable = false, updatable = false)
+	private Integer order_id;
+
+	@Column(nullable = false, updatable = false)
+	private Integer buyer_id;
+
+	@Column(nullable = false, updatable = false)
+	private Integer famer_id;
+
 	private Date created_at;
 	private Date updated_at;
-
-	@OneToMany(targetEntity = Notification.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	private List<Notification> notifications;
-
-	@OneToMany(targetEntity = Rating.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	private List<Rating> ratings;
-
-	@OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	private List<Comment> comments;
 
 }

@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,9 +28,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "famers")
-public class Famer {
-
+@Table(name = "buyers")
+public class Buyer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -43,10 +42,7 @@ public class Famer {
 	@NotBlank(message = "Le prenoms ne peut  pas etre vide")
 	private String first_name;
 
-	@NotNull(message = "L'adresse mail est oligatoire")
-	@NotBlank(message = "L'adresse mail ne peut  pas etre vide")
-	@Email(message = "Ce que vous avez entré n'est pas un mail au bon format")
-	@Column(nullable = false, updatable = true, unique = true)
+	@Email(message = "Ce que vous entrez n'est pas un mail au bon format")
 	private String e_mail;
 
 	private String email_verified_at;
@@ -55,42 +51,36 @@ public class Famer {
 	@NotBlank(message = "Le mot de passe ne peut  pas etre vide")
 	private String password;
 
-	private String password_confirm;
-
-	@Column(nullable = false, updatable = false)
-	private String slug;
-
-	private String picture;
-	private String theme;
-
-	@NotNull(message = "Le champ sexe est oligatoire")
-	@NotBlank(message = "Le champ sexe ne peut pas etre vide")
-	private Enum sexe;
-
 	@NotNull(message = "Le numero de telephone est oligatoire")
 	@NotBlank(message = "Le numero de telephone  pas etre vide")
 	private String number_one;
 
-	private String number_twoo;
-	private Boolean famer_status;
-	private Date date_of_birth;
+//	@Enumerated
+	private Enum sexe;
+
+	private String slug;
+
+	private char Buyer_status;
+	private String theme;
+	private String picture;
+
 	private Date created_at;
 	private Date updated_at;
 
-	/*
-	 * le champ famer_id se remplir automatique en prenamt l'id de l'agriculteur
-	 * connecté
-	 */
-	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "famer_id", referencedColumnName = "id")
-	private List<Product> produts;
-
 	@OneToMany(targetEntity = Notification.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "famer_id", referencedColumnName = "id")
+	@JoinColumn(name = "buyer_id", referencedColumnName = "id")
 	private List<Notification> notifications;
 
 	@OneToMany(targetEntity = Order.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "famer_id", referencedColumnName = "id")
+	@JoinColumn(name = "buyer_id", referencedColumnName = "id")
 	private List<Order> orders;
+
+	@OneToMany(targetEntity = Rating.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "buyer_id", referencedColumnName = "id")
+	private List<Rating> ratings;
+
+	@OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "buyer_id", referencedColumnName = "id")
+	private List<Comment> comments;
 
 }
