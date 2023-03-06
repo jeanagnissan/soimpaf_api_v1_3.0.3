@@ -44,4 +44,9 @@ public class Slider {
 	@Column(nullable = false, updatable = false)
 	private String slug;
 
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

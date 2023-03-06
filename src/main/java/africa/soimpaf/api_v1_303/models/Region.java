@@ -47,4 +47,9 @@ public class Region {
 	@JoinColumn(name = "region_id", referencedColumnName = "id")
 	private List<Citie> cities;
 
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

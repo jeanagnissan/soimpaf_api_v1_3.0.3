@@ -27,8 +27,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "contrys")
-public class Contry {
+@Table(name = "countrys")
+public class Country {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,7 +45,12 @@ public class Contry {
 	private Date updated_at;
 
 	@OneToMany(targetEntity = Region.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "contry_id", referencedColumnName = "id")
+	@JoinColumn(name = "country_id", referencedColumnName = "id")
 	private List<Region> regions;
+
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

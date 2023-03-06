@@ -48,4 +48,9 @@ public class TypeCrop {
 	@JoinColumn(name = "type_crop_id", referencedColumnName = "id")
 	private List<Product> products;
 
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

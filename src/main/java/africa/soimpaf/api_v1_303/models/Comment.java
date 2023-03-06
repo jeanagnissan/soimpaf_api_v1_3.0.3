@@ -38,5 +38,9 @@ public class Comment {
 
 	private Date created_at;
 	private Date updated_at;
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

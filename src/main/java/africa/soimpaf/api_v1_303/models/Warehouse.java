@@ -62,4 +62,9 @@ public class Warehouse {
 	@JoinColumn(name = "waherouse_id", referencedColumnName = "id")
 	private List<Product> produts;
 
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

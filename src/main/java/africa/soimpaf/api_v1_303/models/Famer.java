@@ -93,4 +93,9 @@ public class Famer {
 	@JoinColumn(name = "famer_id", referencedColumnName = "id")
 	private List<Order> orders;
 
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

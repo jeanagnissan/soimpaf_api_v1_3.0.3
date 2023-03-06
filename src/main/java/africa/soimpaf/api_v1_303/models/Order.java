@@ -68,4 +68,9 @@ public class Order {
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	private List<Comment> comments;
 
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
